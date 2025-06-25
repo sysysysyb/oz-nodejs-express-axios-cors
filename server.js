@@ -30,6 +30,12 @@ app.get("/", (req, res) => {
   return res.json(data);
 });
 
+app.post("/", (req, res) => {
+  const [key, value] = req.body;
+  data = { ...data, [key]: value };
+  return res.send("데이터가 추가되었습니다.");
+});
+
 app.put("/", (req, res) => {
   const newData = req.body;
   data.message = newData.newMessage;
@@ -38,7 +44,7 @@ app.put("/", (req, res) => {
 
 app.delete("/", (req, res) => {
   data = {};
-  res.send("데이터가 삭제되었습니다.");
+  return res.send("데이터가 삭제되었습니다.");
 });
 
 // const server = http.createServer((req, res) => {
