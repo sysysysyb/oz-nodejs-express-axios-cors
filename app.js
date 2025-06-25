@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await axios.get("http://localhost:3000");
       const data = response.data;
-      messageDisplay.textContent = data.message || "메시지가 없습니다";
+      messageDisplay.textContent = data.message || "메시지가 없습니다 😅";
     } catch (error) {
       console.error("메시지 가져오기 오류:", error);
     }
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 서버에 메시지 업데이트 요청 보내기
   updateButton.addEventListener("click", async () => {
-    const newMessage = prompt("새로운 메시지를 입력하세요:");
+    const newMessage = prompt("🎉 새로운 메시지를 입력하세요:");
     if (newMessage) {
       try {
         const response = await axios.put("http://localhost:3000", {
