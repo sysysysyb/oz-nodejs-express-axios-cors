@@ -22,14 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const newMessage = prompt("새로운 메시지를 입력하세요:");
     if (newMessage) {
       try {
-        const response = await fetch("http://localhost:3000", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "text/plain",
-          },
-          body: newMessage,
+        const response = await axios.put("http://localhost:3000", {
+          newMessage,
         });
-        const data = await response.text();
+        const data = response.data;
         messageDisplay.textContent = data;
       } catch (error) {
         console.error("메시지 업데이트 오류:", error);

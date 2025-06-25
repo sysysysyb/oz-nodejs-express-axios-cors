@@ -16,10 +16,11 @@ app.use(
   cors({
     origin: "http://192.168.55.177:5501",
     methods: ["OPTIONS", "GET", "POST", "PUT", "DELETE"],
-    headers: { "Content-Type": "application/json" },
+    headers: "Content-Type",
   })
 );
 app.use(express.json());
+app.use(express.text());
 
 app.options("/", (req, res) => {
   return res.send("요청을 보내주세요.");
@@ -27,6 +28,12 @@ app.options("/", (req, res) => {
 
 app.get("/", (req, res) => {
   return res.json(data);
+});
+
+app.put("/", (req, res) => {
+  const newData = req.body;
+  data.message = newData.newMessage;
+  return res.send(`업데이트된 데이터: ${newData.newMessage}`);
 });
 
 // const server = http.createServer((req, res) => {
