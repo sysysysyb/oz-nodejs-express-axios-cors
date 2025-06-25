@@ -36,10 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 서버에 메시지 삭제 요청 보내기
   deleteButton.addEventListener("click", async () => {
     try {
-      const response = await fetch("http://localhost:3000", {
-        method: "DELETE",
-      });
-      const data = await response.text();
+      const response = await axios.delete("http://localhost:3000");
+      const data = await response.data;
       messageDisplay.textContent = data;
     } catch (error) {
       console.error("메시지 삭제 오류:", error);

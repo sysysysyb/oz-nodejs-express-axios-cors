@@ -36,6 +36,11 @@ app.put("/", (req, res) => {
   return res.send(`업데이트된 데이터: ${newData.newMessage}`);
 });
 
+app.delete("/", (req, res) => {
+  data = {};
+  res.send("데이터가 삭제되었습니다.");
+});
+
 // const server = http.createServer((req, res) => {
 //   if (req.method === "OPTIONS") {
 //     res.writeHead(204, headers);
